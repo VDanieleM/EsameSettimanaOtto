@@ -92,5 +92,5 @@ img:hover {
 }
 
 .pulse {
-  animation: pulse 1s infinite; /* Imposta l'animazione di pulsazione */
+  animation: pulse 1s infinite;
 }
