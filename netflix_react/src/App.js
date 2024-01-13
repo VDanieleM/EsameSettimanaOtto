@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navigazione from './components/Navigazione';
-import Section from './components/Section';
 import Footer from './components/Footer';
+import Homepage from './components/Homepage';
+import Profile from './components/Profile';
+import Settings from './components/Settings';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Mainsection from './components/Mainsection';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -14,7 +16,7 @@ function App() {
       setLoading(false);
     }, 2000);
 
-    // Cleanup function to clear the timeout when the component unmounts
+
     return () => clearTimeout(timeout);
   }, []);
 
@@ -22,13 +24,18 @@ function App() {
     <div className="App">
       <header className="App-header">
         {loading ? (
-          <h1 className="text-danger text-center loader pulse">Loading...</h1> // Puoi sostituire questo con un componente loader più avanzato
+          <h1 className="text-danger text-center loader pulse">Loading...</h1>
         ) : (
           <>
+          <Router>
             <Navigazione />
-            <Section />
-            <Mainsection />
+            <Routes>
+              <Route path="/"  element={<Homepage />} />
+              <Route path="/Profile" element={<Profile />} />
+              <Route path="/Settings" element={<Settings />} />
+            </Routes>
             <Footer />
+            </Router>
           </>
         )}
       </header>
